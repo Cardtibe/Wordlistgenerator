@@ -42,7 +42,7 @@ for i in codp:
 		filew=i
 
 filew=filew.strip()
-
+print(filew)
 
 def kbt(x):
 	r=[]
@@ -85,6 +85,11 @@ for i in params:
 		if i.find('-s'+str(si))!=-1:
 			s=si
 del params
+if m==1:
+	bets=open("best.txt","r")
+	best=bets.readlines()
+	bets.close()
+dosya=open(filew,"w")
 tkk=[]
 enlist=[]
 if b==1: 
@@ -113,16 +118,13 @@ del tkk
 
 for i in range(0,len(iks)):
 	for si in range(0,len(kiks)):
-		enlist.append(iks[i]+kiks[si])
-
+		suan=iks[i]+kiks[si]
+		if len(suan)>=a:
+			dosya.write(suan+"\n")
+for i in best:
+	dosya.write(i)
 del iks
 del kiks
-if m==1:
-	bets=open((os.getcwd()+"/"+"best.txt"),"r")
-	best=bets.readlines()
-	enlist+=best
-	bets.close()
-dosya=open((os.getcwd()+"/"+filew),"w")
 for i in range(0,len(enlist)):
 	if len(enlist[i])>=a:
 		dosya.write(enlist[i]+"\n")
